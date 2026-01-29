@@ -1,0 +1,99 @@
+* {
+    font-family: "JetBrainsMono Nerd Font"; /* Шрифт с иконками */
+    font-size: 14px; /* Размер текста */
+    font-weight: bold; /* Жирное начертание */
+    border: none; /* Без рамок */
+    border-radius: 0; /* Скругление по умолчанию */
+    min-height: 0; /* Минимальная высота */
+}
+
+window#waybar {
+    background: transparent; /* Полностью прозрачный фон бара */
+}
+
+tooltip {
+    background: #1e1e2e; /* Фон всплывающих окон */
+    border-radius: 10px; /* Скругление углов подсказки */
+    border: 1px solid #b4befe; /* Тонкая рамка подсказки */
+}
+
+/* ОБЩИЙ СТИЛЬ МОДУЛЕЙ (ТЕНИ УДАЛЕНЫ) */
+#clock, #network, #language, #battery, #backlight, #pulseaudio, #tray, #mpris {
+    background: #1e1e2e; /* Тёмный фон блоков */
+    color: #cdd6f4; /* Светлый цвет текста */
+    padding: 0 15px; /* Внутренние отступы */
+    margin: 0 5px; /* Внешние отступы между блоками */
+    border-radius: 15px; /* Скругление блоков */
+    box-shadow: none; /* ТЕНИ УДАЛЕНЫ (исправлено) */
+}
+
+#custom-launcher {
+    background: #1793d1; /* Цвет фона Arch Linux */
+    color: #ffffff; /* Белый цвет иконки */
+    padding: 0px 14px 0px 14px; /* Выравнивание иконки */
+    margin-right: 10px; /* Отступ справа */
+    border-radius: 15px; /* Скругление */
+    font-size: 20px; /* Размер иконки лаунчера */
+    box-shadow: none; /* ТЕНИ УДАЛЕНЫ */
+}
+
+#custom-launcher:hover {
+    background: #1ebafc; /* Цвет при наведении */
+}
+
+#workspaces {
+    background: #1e1e2e; /* Фон блока рабочих столов */
+    border-radius: 15px; /* Скругление */
+    padding: 0 8px; /* Отступы */
+    box-shadow: none; /* ТЕНИ УДАЛЕНЫ */
+}
+
+#workspaces button {
+    padding: 0 10px; /* Расстояние между кнопками столов */
+    color: #6c7086; /* Цвет неактивного стола */
+    background: transparent; /* Без фона */
+}
+
+#workspaces button.active {
+    color: #1793d1; /* Цвет активного стола */
+}
+
+#workspaces button:hover {
+    color: #ffffff; /* Цвет при наведении */
+    background: rgba(255, 255, 255, 0.1); /* Легкая подсветка */
+    border-radius: 10px; /* Скругление при наведении */
+}
+
+/* ЦВЕТА МОДУЛЕЙ */
+#mpris { 
+    background: #1e1e2e; /* Сделал такой же фон, как у всех (исправлено) [cite: 4] */
+    color: #a6e3a1; /* Зеленоватый цвет текста для музыки [cite: 4] */
+}
+
+#clock { 
+    background: #181825; /* Чуть более глубокий фон часов */
+    color: #f9e2af; /* Желтоватый цвет времени */
+    font-size: 15px; /* Размер шрифта времени */
+}
+
+#network { color: #89b4fa; } /* Синий для сети [cite: 8] */
+#network.disconnected { color: #f38ba8; } /* Красный при отключении [cite: 8] */
+
+#battery { color: #a6e3a1; } /* Зеленый для батареи [cite: 11] */
+#battery.charging { color: #ffffff; background: #26A65B; } /* Цвет при зарядке [cite: 11] */
+#battery.warning:not(.charging) {
+    background: #f38ba8; /* Красный фон при низком заряде [cite: 11] */
+    color: #1e1e2e; /* Темный текст */
+    animation-name: blink; /* Анимация мигания [cite: 11] */
+    animation-duration: 0.5s; /* Скорость мигания [cite: 11] */
+    animation-iteration-count: infinite; /* Бесконечно [cite: 11] */
+    animation-direction: alternate; /* Туда-обратно [cite: 11] */
+}
+
+#pulseaudio { color: #fab387; } /* Оранжевый для звука [cite: 9] */
+#backlight { color: #f9e2af; } /* Желтый для яркости [cite: 10] */
+#tray { background: #1e1e2e; padding: 0 10px; } /* Фон трея [cite: 12] */
+
+@keyframes blink {
+    to { background-color: #ffffff; color: #000000; } /* Финальное состояние мигания [cite: 11] */
+}

@@ -1,0 +1,135 @@
+/**
+ * САМЫЙ КРАСИВЫЙ ROFI ДЛЯ ARCH HYPRLAND
+ * Тема: Soft UI Blue (Arch Edition)
+ */
+
+configuration {
+    modi:                       "drun,run";
+    show-icons:                  true;        // Включаем иконки
+    display-drun:                "";         // Иконка поиска
+    display-run:                 "";         // Иконка команд
+    drun-display-format:         "{name}";    // Только имя приложения
+    font:                        "JetBrainsMono Nerd Font 12";
+}
+
+/* --- ЦВЕТОВАЯ ПАЛИТРА --- */
+* {
+    bg:          #1e1e2e; // Темный фон (как в Waybar)
+    bg-alt:      #313244; // Светлее для элементов
+    fg:          #cdd6f4; // Текст
+    accent:      #1793d1; // Синий Arch
+    urgent:      #f38ba8; // Красный (для ошибок)
+    
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* --- ГЛАВНОЕ ОКНО --- */
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       600px;      // Ширина меню
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      2px solid;
+    border-radius:               20px;       // Большое скругление
+    border-color:                @accent;    // Рамка цвета Arch
+    background-color:            @bg;
+    cursor:                      "default";
+}
+
+/* --- КОНТЕЙНЕР --- */
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     30px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ]; // Сначала поиск, потом список
+}
+
+/* --- СТРОКА ПОИСКА --- */
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     15px;
+    border-radius:               15px;       // Скругление поиска
+    background-color:            @bg-alt;    // Фон поиска
+    text-color:                  @fg;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @accent;    // Иконка поиска синяя
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Поиск приложений...";
+    placeholder-color:           #6c7086;
+}
+
+/* --- СПИСОК ПРИЛОЖЕНИЙ --- */
+listview {
+    enabled:                     true;
+    columns:                     1;          // В одну колонку
+    lines:                       8;          // Количество строк
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;      // Без полосы прокрутки
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     5px;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+/* --- ЭЛЕМЕНТ СПИСКА --- */
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     10px;
+    border-radius:               12px;       // Скругление "пилюли" при выборе
+    background-color:            transparent;
+    text-color:                  @fg;
+    cursor:                      pointer;
+}
+
+/* Стиль при наведении или выборе */
+element selected.normal {
+    background-color:            @accent;    // Заливаем синим Arch
+    text-color:                  #ffffff;    // Текст становится белым
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;       // Размер иконок
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    cursor:                      inherit;
+}
