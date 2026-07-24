@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=FlClashX
+Comment=FlClashX startup script
+Exec=/usr/share/FlClashX/FlClashX
+StartupNotify=false
+Terminal=false

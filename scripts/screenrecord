@@ -1,0 +1,23 @@
+#!/bin/bash
+
+RECORDINGS_DIR="$HOME/Videos/Recordings"
+mkdir -p "$RECORDINGS_DIR"
+
+if pgrep -x wf-recorder > /dev/null; then
+    notify-send "Запись уже идёт (Win+Delete для остановки)"
+    exit 1
+fi
+
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+OUTPUT="$RECORDINGS_DIR/recording-$TIMESTAMP.mp4"
+
+AUDIO_SOURCE=$(pactl list sources short | grep monitor | head -1 | awk '{print $2}')
+GEOMETRY=$(slurp)
+
+if [ -z "$GEOMETRY" ]; then
+    notify-send "Запись отменена"
+    exit 1
+fi
+
+notify-send "Запись начата (Delete для остановки)"
+wf-recorder -g "$GEOMETRY" -f "$OUTPUT" --audio="$AUDIO_SOURCE"

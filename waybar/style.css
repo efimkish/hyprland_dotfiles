@@ -1,0 +1,206 @@
+/* ===================================================================== */
+/* 💎 PREMIUM CATPPUCCIN MOCHA - FLOATING PILLS STYLE (NO SHADOWS)       */
+/* ===================================================================== */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    border: none;
+    min-height: 0;
+}
+
+/* Полностью прозрачный фон самой панели */
+window#waybar {
+    background: transparent;
+}
+
+/* --------------------------------------------------------------------- */
+/* 🧊 БАЗОВЫЙ СТИЛЬ ВСЕХ "ТАБЛЕТОК" */
+/* --------------------------------------------------------------------- */
+#clock, 
+#network, 
+#language,
+#hyprland-language,
+#battery, 
+#backlight, 
+#pulseaudio, 
+#tray, 
+#mpris, 
+#workspaces, 
+#custom-launcher {
+    /* Темный полупрозрачный фон (Base) */
+    background: rgba(30, 30, 46, 0.85);
+    /* Аккуратная рамка цвета Surface0 */
+    border: 2px solid #313244;
+    /* Закругляем, делаем "таблетки" */
+    border-radius: 100px; 
+    /* Внешние отступы и внутренние */
+    margin: 3px 4px;
+    padding: 2px 16px;
+    /* ТЕНИ УДАЛЕНЫ */
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+/* При наведении модуль чуть светлеет */
+#clock:hover, 
+#network:hover, 
+#language:hover,
+#hyprland-language:hover,
+#battery:hover, 
+#backlight:hover, 
+#pulseaudio:hover, 
+#mpris:hover {
+    background: #313244;
+}
+
+/* --------------------------------------------------------------------- */
+/* 🚀 КНОПКА ЗАПУСКА */
+/* --------------------------------------------------------------------- */
+#custom-launcher {
+    color: #89b4fa; /* Blue */
+    font-size: 20px;
+    padding: 0px 14px 0px 18px;
+}
+
+#custom-launcher:hover {
+    color: #b4befe; /* Lavender */
+    background: #313244;
+}
+
+/* --------------------------------------------------------------------- */
+/* 📑 РАБОЧИЕ СТОЛЫ */
+/* --------------------------------------------------------------------- */
+#workspaces {
+    padding: 2px 6px;
+}
+
+#workspaces button {
+    color: #6c7086; /* Overlay0 */
+    background: transparent;
+    border-radius: 100px;
+    margin: 2px;
+    padding: 0 12px;
+    transition: none;
+}
+
+#workspaces button.active {
+    color: #11111b; /* Crust */
+    background: #cba6f7; /* Mauve */
+    padding: 0 12px;
+    transition: none;
+}
+
+#workspaces button:hover {
+    color: #cdd6f4;
+    background: #45475a;
+    transition: none;
+}
+
+/* --------------------------------------------------------------------- */
+/* 🎨 РАСКРАСКА ТЕКСТА И ИКОНОК */
+/* --------------------------------------------------------------------- */
+
+#mpris { color: #f5c2e7; }
+#pulseaudio { color: #89dceb; }
+#backlight { color: #fab387; }
+#network { color: #f9e2af; }
+#network.disconnected { color: #f38ba8; }
+#language, #hyprland-language { color: #94e2d5; }
+#battery { color: #a6e3a1; }
+#battery.charging { color: #89b4fa; }
+#battery.warning:not(.charging) {
+    color: #f38ba8;
+    animation: blink 1s linear infinite;
+}
+#clock { color: #b4befe; }
+#tray { padding: 2px 12px; }
+
+/* Тултипы */
+tooltip {
+    background: rgba(30, 30, 46, 0.95);
+    border: 2px solid #cba6f7;
+    border-radius: 12px;
+    box-shadow: none; /* Убрал тень и здесь */
+}
+tooltip label {
+    color: #cdd6f4;
+}
+
+@keyframes blink {
+    50% { color: #1e1e2e; background: #f38ba8; }
+}
+
+/* --------------------------------------------------------------------- */
+/* 📅 КАСТОМНЫЙ КАЛЕНДАРЬ С АНИМАЦИЕЙ */
+/* --------------------------------------------------------------------- */
+#custom-calendar {
+    background: rgba(30, 30, 46, 0.85);
+    border: 2px solid #313244;
+    border-radius: 100px;
+    margin: 3px 4px;
+    padding: 2px 16px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: #b4befe;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    min-width: 120px;
+}
+
+#custom-calendar:hover {
+    background: #313244;
+    color: #cdd6f4;
+}
+
+/* Состояние календаря - расширенный вид */
+#custom-calendar.calendar-expanded {
+    min-width: 240px;
+    min-height: 200px;
+    padding: 10px 20px;
+    border-radius: 16px;
+}
+
+/* Состояние планировщика */
+#custom-calendar.tasks-expanded {
+    min-width: 240px;
+    min-height: 150px;
+    padding: 10px 20px;
+    border-radius: 16px;
+}
+
+/* Сетка календаря */
+#custom-calendar .calendar-grid {
+    margin-top: 8px;
+}
+
+#custom-calendar .calendar-day {
+    color: #94e2d5;
+    font-size: 13px;
+}
+
+#custom-calendar .calendar-day.today {
+    color: #f38ba8;
+    background: rgba(243, 139, 168, 0.2);
+    border-radius: 4px;
+}
+
+#custom-calendar .calendar-day.other {
+    color: #6c7086;
+}
+
+/* Список задач */
+#custom-calendar .task-list {
+    margin-top: 8px;
+}
+
+#custom-calendar .task-item {
+    padding: 2px 0;
+    color: #a6e3a1;
+    border-bottom: 1px dashed #313244;
+}
+
+#custom-calendar .task-item:last-child {
+    border-bottom: none;
+}

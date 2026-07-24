@@ -1,0 +1,10 @@
+show=drun
+allow_images=true
+hide_scroll=true
+insensitive=true
+prompt=Search...
+no_actions=true
+drun_display_generic=true
+drun_match_all=true
+columns=1
+width=30%
